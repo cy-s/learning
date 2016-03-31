@@ -1,0 +1,174 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>maControls</title> 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><!--屏幕宽度等于设备宽度-->
+<meta content="blue" name="apple-mobile-web-app-status-bar-style" />  <!--指定的iphone中safari顶端的状态条的样式-->
+<meta content="telephone=no" name="format-detection" /><!--ios告诉设备忽略将页面中的数字识别为电话号码-->
+
+<script src="../js/jquery-1.11.0.min.js"></script><!--基础js-->
+<script src="../js/fastclick.js"></script><!--基础js-->
+<script src="../js/mCommon20150212.js"></script><!--公用js-->
+
+<link rel="stylesheet" href="../css/mCommon_basicDisplayList.css"/>
+<script src="../js/stringCut.js"></script><!--字符截取-->
+
+<script>
+
+$().ready(function(){
+//字符截取
+	$(".mCommon_basicDisplayListItem_info").each(function(){
+		var item=$(this);
+		var textBox=item.find("h3");
+		var title=textBox.text();
+		var fontSize=parseInt(textBox.css("font-size"));//字号
+		var num=parseInt(textBox.width()/fontSize*0.8)*2*2;//取字数
+		var newTitle=title.subCHStr(0,num);//字符截取
+		textBox.html(newTitle);//写入文字
+	});
+//字符截取end
+
+//金额大于20个字符，字号缩小
+	$(".mCommon_basicDisplayList_money").each(function(){
+		stringMinify($(this));
+	})
+//金额大于20个字符，字号缩小end
+
+})
+
+//金额字符缩小
+function stringMinify(obj){//obj为jq对象,当金额容器的宽度超过父容器的宽度，字号变小
+	function fontSize(){
+		var moneyWrapperW= obj.outerWidth();
+		var moneyW = obj.children("span").outerWidth();
+
+		if(moneyW >= moneyWrapperW){
+			obj.removeClass("mCommon_basicDisplayList_sizeBig").addClass("mCommon_basicDisplayList_sizeSmall")
+		}else{
+			obj.removeClass("mCommon_basicDisplayList_sizeSmall").addClass("mCommon_basicDisplayList_sizeBig")
+		}
+	}
+	fontSize();
+	$(window).resize(function(){
+		fontSize();
+	})
+}
+//金额字符缩小 end
+
+</script>
+
+
+</head> 
+<body>
+<script type="text/plain">
+注释：
+商铺-列表
+1.商品的已售罄状态，在每个 mCommon_basicDisplayListItem 上加 mCommon_basicDisplayListItemDisabled
+2.商品两列显示，mCommon_basicDisplayList增加class：mCommon_basicDisplayListTwoCol
+</script>
+
+<div class="mCommon_basicDisplayList"><!--两列增加class：mCommon_basicDisplayListTwoCol-->
+	<!--一条商品-->
+	<div class="mCommon_basicDisplayListItem borderPx1 mCommon_basicDisplayListItemDisabled clearfixOverflow" tapclass="mCommon_basicDisplayListItem_tapClass"><!--已售罄状态 mCommon_basicDisplayListItemDisabled-->
+		<div class="mCommon_basicDisplayListItem_imgAndInfo">
+			<div class="mCommon_basicDisplayListItem_img">
+				<div class="mCommon_basicDisplayListItemSoldOut">卖光了</div>
+				<img src="../pic/mShop_listItem_img.png">
+			</div>
+			<div class="mCommon_basicDisplayListItem_info">
+				<h3>幼儿园小班教具木偶玩具动物园显示两行断尾幼</h3>
+				<div class="mCommon_basicDisplayList_money">
+					<span><i class="currency">￥</i><strong>9999999.00</strong><em>/单位五个字<i>起</i></em></span>
+				</div>
+				<div class="mCommon_basicDisplayList_areaAndDistance">
+					<span class="mCommon_basicDisplayList_distance">999.99km</span>
+					<span class="mCommon_basicDisplayList_area textCut">海淀区海淀区海淀区海淀区海淀区海淀区</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--一条商品end-->
+	<!--一条商品-->
+	<div class="mCommon_basicDisplayListItem borderPx1 clearfixOverflow" tapclass="mCommon_basicDisplayListItem_tapClass"><!--已售罄状态 mCommon_basicDisplayListItemDisabled-->
+		<div class="mCommon_basicDisplayListItem_imgAndInfo">
+			<div class="mCommon_basicDisplayListItem_img">
+				<div class="mCommon_basicDisplayListItemSoldOut">卖光了</div>
+				<img src="../pic/mShop_listItem_img.png">
+			</div>
+			<div class="mCommon_basicDisplayListItem_info">
+				<h3>幼儿园小班教具木偶玩具动物园显示两行断尾幼...</h3>
+				<div class="mCommon_basicDisplayList_money">
+					<span>￥<strong>9999999.00</strong><em>/单位五个字<i>起</i></em></span>
+				</div>
+				<div class="mCommon_basicDisplayList_areaAndDistance">
+					<span class="mCommon_basicDisplayList_distance">&lt;100m</span>
+					<span class="mCommon_basicDisplayList_area textCut">丰台区</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--一条商品end-->
+	<!--一条商品-->
+	<div class="mCommon_basicDisplayListItem borderPx1 clearfixOverflow" tapclass="mCommon_basicDisplayListItem_tapClass"><!--已售罄状态 mCommon_basicDisplayListItemDisabled-->
+		<div class="mCommon_basicDisplayListItem_imgAndInfo">
+			<div class="mCommon_basicDisplayListItem_img">
+				<div class="mCommon_basicDisplayListItemSoldOut">卖光了</div>
+				<img src="../pic/mShop_listItem_img.png">
+			</div>
+			<div class="mCommon_basicDisplayListItem_info">
+				<h3>幼儿园小班教具木偶玩具动物园显示两行断尾幼...</h3>
+				<div class="mCommon_basicDisplayList_money">
+					<span>￥<strong>9999999.00</strong><em>/单位五个字<i>起</i></em></span>
+				</div>
+				<div class="mCommon_basicDisplayList_areaAndDistance">
+					<span class="mCommon_basicDisplayList_distance">&lt;100m</span>
+					<span class="mCommon_basicDisplayList_area textCut">西城区</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--一条商品end-->
+	<!--一条商品-->
+	<div class="mCommon_basicDisplayListItem borderPx1 clearfixOverflow" tapclass="mCommon_basicDisplayListItem_tapClass"><!--已售罄状态 mCommon_basicDisplayListItemDisabled-->
+		<div class="mCommon_basicDisplayListItem_imgAndInfo">
+			<div class="mCommon_basicDisplayListItem_img">
+				<div class="mCommon_basicDisplayListItemSoldOut">卖光了</div>
+				<img src="../pic/mShop_listItem_img.png">
+			</div>
+			<div class="mCommon_basicDisplayListItem_info">
+				<h3>幼儿园小班教具木偶玩具动物园显示两行断尾幼...</h3>
+				<div class="mCommon_basicDisplayList_money">
+					<span>￥<strong>9999999.00</strong><em>/单位五个字<i>起</i></em></span>
+				</div>
+				<div class="mCommon_basicDisplayList_areaAndDistance">
+					<span class="mCommon_basicDisplayList_distance">&lt;100m</span>
+					<span class="mCommon_basicDisplayList_area textCut">东城区</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--一条商品end-->
+	<!--一条商品-->
+	<div class="mCommon_basicDisplayListItem borderPx1 clearfixOverflow" tapclass="mCommon_basicDisplayListItem_tapClass"><!--已售罄状态 mCommon_basicDisplayListItemDisabled-->
+		<div class="mCommon_basicDisplayListItem_imgAndInfo">
+			<div class="mCommon_basicDisplayListItem_img">
+				<div class="mCommon_basicDisplayListItemSoldOut">卖光了</div>
+				<img src="../pic/mShop_listItem_img.png">
+			</div>
+			<div class="mCommon_basicDisplayListItem_info">
+				<h3>幼儿园小班教具木偶玩具动物园显示两行断尾幼...</h3>
+				<div class="mCommon_basicDisplayList_money">
+					<span>￥<strong>9999999.00</strong><em>/单位五个字<i>起</i></em></span>
+				</div>
+				<div class="mCommon_basicDisplayList_areaAndDistance">
+					<span class="mCommon_basicDisplayList_distance">&lt;100m</span>
+					<span class="mCommon_basicDisplayList_area textCut">石景山区</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--一条商品end-->
+</div>
+</body>
+</html>
